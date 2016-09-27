@@ -1,0 +1,14 @@
+<h1>UE</h1>
+
+<ul class="thumbnails">
+  <li class="span4" ng-repeat="membre in membresUE">
+    <div class="thumbnail">
+      <img data-src="holder.js/300x200" alt="" class="img-circle">
+      <h3>{{ membre.value.bools }} - {{ membre.value.bucque }}</h3>
+      <h5>{{ membre.value.prenom }} {{ membre.value.nom }}</h5>
+      <p>{{ membre.value.description }}</p>
+      <center><button type="submit" class="btn btn-primary">Contacter</button></center>
+    </div>
+  </li>
+  
+</ul>

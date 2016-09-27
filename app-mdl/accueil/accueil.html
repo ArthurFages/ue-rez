@@ -1,0 +1,81 @@
+
+<div class="container">
+
+<div class="mdl-grid">
+  <div class="mdl-cell mdl-cell--6-col">
+
+  <ul class="demo-list-three mdl-list" ng-repeat="message in messages">
+    <div class="card-container">
+      <div class="demo-card-wide mdl-card mdl-shadow--2dp">
+        <div class="mdl-card__title">
+          <h2 class="mdl-card__title-text">{{ message.value.titre }}</h2>
+        </div>
+        <div class="mdl-card__supporting-text">
+          {{ message.value.message }}
+        </div>
+        <div class="mdl-card__actions mdl-card--border">
+          <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" href="{{ message.value.link}}">
+            En savoir plus
+          </a>
+        </div>
+        <div class="mdl-card__menu">
+          <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
+            <i class="material-icons">share</i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    </ul>
+
+  </div>
+
+  <div class="mdl-cell mdl-cell--6-col">
+
+    <div class="info">
+      <div class="section__text mdl-grid mdl-cell mdl-cell--12-col">
+          <h4>A quoi sert cette appli ?</h4>
+      </div>
+
+      <div class="info-container">
+
+        <div id="align-center-logo" class="section__circle-container icon-container">
+            <i class="material-icons md-48 md-dark md-inactive">info_outline</i>
+        </div>
+        <div class="section__text text-container">
+          <h5>Avoir des infos</h5>
+          Qui sint ut et qui nisi cupidatat. Reprehenderit nostrud proident officia exercitation anim et pariatur ex.
+        </div>
+
+      </div>
+
+      <div class="info-container">
+
+        <div id="align-center-logo" class="section__circle-container icon-container">
+            <i class="material-icons md-48 md-dark md-inactive">build</i>
+        </div>
+        <div class="section__text text-container">
+          <h5>Accéder aux salles et au matos de la rez</h5>
+          Qui sint ut et qui nisi cupidatat. Reprehenderit nostrud proident officia exercitation anim et pariatur ex.
+        </div>
+
+      </div>
+
+      <div class="info-container">
+
+        <div id="align-center-logo" class="section__circle-container icon-container">
+            <i class="material-icons md-48 md-dark md-inactive">people</i>
+        </div>
+        <div class="section__text text-container">
+          <h5>Contacter les bonnes personnes</h5>
+          Qui sint ut et qui nisi cupidatat. Reprehenderit nostrud proident officia exercitation anim et pariatur ex.
+        </div>
+
+      </div>
+
+      
+    </div>
+
+  </div>
+</div>
+

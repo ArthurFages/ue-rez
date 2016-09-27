@@ -1,0 +1,113 @@
+<h1>Emprunts</h1>
+
+<h4>Qu'est ce que tu veux emprunter ?</h4>
+
+<div id="demo-snackbar-example" class="mdl-js-snackbar mdl-snackbar">
+  <div class="mdl-snackbar__text"></div>
+  <button class="mdl-snackbar__action" type="button"></button>
+</div>
+
+<div class="mdl-grid">  
+  
+
+
+
+  <div class="mdl-cell mdl-cell--6-col">
+    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+      <input class="mdl-textfield__input" type="text" ng-model="bucque" id="bucque"/>
+      <label class="mdl-textfield__label" for="bucque">Bucque</label>
+    </div>
+    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+      <input class="mdl-textfield__input" type="text" ng-model="chambre" id="chambre"/>
+      <label class="mdl-textfield__label" for="chambre">Chambre</label>
+    </div>
+    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+      <input class="mdl-textfield__input" type="text" ng-model="tel" id="tel"/>
+      <label class="mdl-textfield__label" for="tel">Tel</label>
+    </div>
+    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+      <input class="mdl-textfield__input" type="text" ng-model="mail" id="mail"/>
+      <label class="mdl-textfield__label" for="mail">Mail</label>
+    </div>
+    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+      <input class="mdl-textfield__input" type="text" ng-model="date" id="date"/>
+      <label class="mdl-textfield__label" for="date">Date</label>
+    </div>
+  </div>
+
+
+
+
+
+
+  <div class="mdl-cell mdl-cell--6-col">
+    <div class="table-content">
+      <div class="mdl-card mdl-shadow--2dp ">     
+        <table class="mdl-data-table mdl-js-data-table mdl-cell--12-col mdl-cell">
+            <thead>
+              <tr>
+                <th class="mdl-data-table__cell--non-numeric">Matos</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr ng-repeat="categorie in categories">
+                <td class="mdl-data-table__cell--non-numeric">{{ categorie.value.nom }}</td>
+                <td>
+                <button ng-click="addDemande(categorie)" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
+                  <i class="material-icons">exposure_plus_1</i>
+                </button>
+                </td>
+              </tr>
+            </tbody>
+        </table>
+   
+        <table class="mdl-data-table mdl-js-data-table mdl-cell--12-col mdl-cell">
+            <thead>
+              <tr>
+                <th class="mdl-data-table__cell--non-numeric">Demande</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr ng-repeat="demande in demandes">
+                <td class="mdl-data-table__cell--non-numeric">{{ demande.demande.value.nom }}</td>
+                <td>
+                <button ng-click="deleteDemande(demande)" class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent">
+                  <i class="material-icons">close</i>
+                </button>
+                </td>
+              </tr>
+            </tbody>
+        </table>
+      </div>
+
+<!--
+      <div class="mdl-shadow--2dp "> 
+      <ul class="demo-list-item mdl-list">
+
+        <li ng-repeat="demande in demandes" class="mdl-list__item">
+          <span class="mdl-list__item-primary-content">
+            {{ demande.demande.value.nom }}
+          </span>
+
+          <button ng-click="deleteDemande(demande)" class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent">
+            <i class="material-icons">close</i>
+          </button>
+        </li>
+      </ul>
+      </div>-->
+    </div>
+  </div>
+
+
+</div>
+
+<br><br><br>
+<center>
+<div class="controls">
+  <button ng-click="sendDemande(bucque, chambre, tel, mail, date)" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
+    Demander
+  </button>
+</div>
+</center>

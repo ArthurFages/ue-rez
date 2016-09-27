@@ -1,0 +1,16 @@
+<div class="well">
+  <p>Dans cette page, tu pourras recevoir toutes les infos de l'UE pour profiter des bon plans à P3, animer la rez et tout ce qui concerne la vie gadz ! </p>
+</div>
+
+<ul class="thumbnails">
+  <li class="span4" ng-repeat="message in messages">
+    <div class="thumbnail">
+      <img data-src="holder.js/300x200" alt="">
+      <h3>{{ message.value.titre }}</h3>
+      <p>{{ message.value.message }}</p>
+      <button href="{{ message.value.link}}" class="btn btn-primary" type="button">En savoir plus</button>
+    </div>
+  </li>
+</ul>
+
+

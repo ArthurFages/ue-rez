@@ -1,0 +1,250 @@
+<h1>Admin</h1>
+
+<center>
+<div class="btn-group">
+  <button class="btn {{ msgAccueilButton }}" ng-click="toMsgAccueil()">Messages accueil</button>
+  <button class="btn {{ msgPgsButton }}" ng-click="toMsgPgs()">Messages des PGs</button>
+  <button class="btn {{ matosButton }}" ng-click="toMatos()">Matos</button>
+  <button class="btn {{ empruntsButton }}" ng-click="toEmprunts()">Emprunts</button>
+  <button class="btn {{ UEButton }}" ng-click="toUE()">UE</button>
+</div>
+</center>
+
+
+<div ng-show="msgPgs">
+  <h2>Messages des PGs</h2>
+  <ul class="thumbnails">
+    <li class="span4" ng-repeat="message in messages">
+      <div class="thumbnail">
+        <img data-src="holder.js/300x200" alt="">
+        <h3>{{ message.value.titre }}</h3>
+        <h5>{{ message.value.qui }}</h5>
+        <p>{{ message.value.message }}</p>
+        <button ng-click="deleteMessage(message)" class="btn btn-danger">
+          <i class="icon-trash" ng-click="deleteMessage(message)"></i>
+        </button>
+      </div>
+    </li>
+  </ul>
+</div>
+
+
+
+
+
+<div ng-show="msgAccueil">
+  <h2>Messages pour les PGs</h2>
+
+  <legend>Messages actuels</legend>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Titre</th>
+        <th>Message</th>
+        <th>Lien</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="message in messagesUE" >
+        <td>{{ message.value.titre }}</td>
+        <td>{{ message.value.message }}</td>
+        <td>{{ message.value.lien }}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <form>
+    <fieldset>
+      <legend>Nouveau message</legend>
+      <input type="text" class="span6" ng-model="titre" id="titre" placeholder="Titre">
+      <input type="text" class="span6" ng-model="lien" id="lien" placeholder="Lien">
+      <textarea type="text" ng-model="message" rows="5" class="input-block-level" id="message" placeholder="Message"></textarea>
+      <center>
+      <button type="submit" ng-click="saveMessage(titre, message, lien)" class="btn btn-primary">Enregistrer</button>
+      </center>
+    </fieldset>
+  </form>
+</div>
+
+
+
+
+
+
+<div ng-show="matos">
+  <h2>Categories</h2>
+    
+  <table class="table">
+      <thead>
+        <tr>
+          <th>Matos</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="categorie in categories">
+          <td>{{ categorie.value.nom }}</td>
+          <td>
+          <button ng-click="deleteCategorie(categorie)" class="btn btn-danger">
+            <i class="icon-trash"></i>
+          </button>
+          </td>
+        </tr>
+      </tbody>
+  </table>
+
+  <form>
+    <fieldset>
+      <input type="text" ng-model="nom" id="nom" placeholder="Nom">
+      <input type="text" ng-model="qte" id="qte" placeholder="Qte">
+
+      <button ng-click="saveCategorie(nom, qte)" type="submit" class="btn btn-primary">Enregistrer</button>
+    </fieldset>
+  </form>
+</div>
+
+
+
+
+
+
+<div ng-show="emprunts">
+  <h2>Emprunts</h2>
+
+  <h3>Demandes d'emprunt</h3>
+  <table class="table">
+      <thead>
+        <tr>
+          <th>Date souhaitée</th>
+          <th>Bucque</th>
+          <th>Chambre</th>
+          <th>Telephone</th>
+          <th>Mail</th>
+          <th>Demande</th>
+          <th>Date demande</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="demande in demandes">
+          <td>{{ demande.value.dateSouhaitee }}</td>
+          <td> {{ demande.value.bucque }} </td>
+          <td> {{ demande.value.chambre }} </td>
+          <td> {{ demande.value.tel }} </td>
+          <td> {{ demande.value.mail }} </td>
+          <td> {{ demande.value.quoi | json }} </td>
+          <td> {{ demande.value.dateDemande }}</td>
+          <td>
+          <button ng-click="validateIdentification(demande)" class="btn btn-warning">
+            <i class="icon-arrow-right"></i>
+          </button>
+          </td>
+        </tr>
+      </tbody>
+  </table>
+
+  <div ng-show="showIdentification" class="ng-hide">
+    <h3>Identification matériel</h3>
+    <h4>Commande sélectionnée</h4>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Date souhaitée</th>
+          <th>Bucque</th>
+          <th>Chambre</th>
+          <th>Telephone</th>
+          <th>Mail</th>
+          <th>Demande</th>
+          <th>Date demande</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>{{ demandeForIdentifiaction.value.dateSouhaitee }}</td>
+          <td> {{ demandeForIdentifiaction.value.bucque }} </td>
+          <td> {{ demandeForIdentifiaction.value.chambre }} </td>
+          <td> {{ demandeForIdentifiaction.value.tel }} </td>
+          <td> {{ demandeForIdentifiaction.value.mail }} </td>
+          <td> {{ demandeForIdentifiaction.value.quoi | json }} </td>
+          <td> {{ demandeForIdentifiaction.value.dateDemande }}</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h4>Identifiants relatifs à cette commande</h4>
+    <span ng-repeat="id in identifiants">
+      <span class="label label-info">
+        {{ id.value }}
+        <button type="button" ng-click="delIdentifiant(id)" class="close" data-dismiss="alert">&times;</button>
+      </span>
+    </span>
+
+    <h4>Identifiants à attribuer à cette commande</h4>
+    <form>
+      <fieldset>
+        <input type="text" ng-model="id" id="id" placeholder="Id marqué sur le matériel">
+
+        <button ng-click="addIdentifiant(id)" class="btn">
+          <i class="icon-plus"></i>
+        </button>
+        <button ng-click="validateDemande(demandeForIdentifiaction, identifiants)" class="btn btn-success">
+          <i class="icon-ok"></i>
+        </button>
+      </fieldset>
+    </form>
+  </div>
+</div>
+
+
+
+
+
+<div ng-show="UE">
+  <h2>UE</h2>
+  <div class="info">
+
+    <table class="table">
+        <thead>
+          <tr>
+            <th>Bools</th>
+            <th>Nom</th>
+            <th>Prenom</th>
+            <th>Bucque</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="membre in membresUE">
+            <td>
+              {{ membre.value.bools }}
+            </td>
+            <td>
+              <input type="text" ng-model="nom" id="nom">
+              <span class="help-block">Actuel : {{ membre.value.nom }}</span>
+            </td>
+            <td>
+              <input class="mdl-textfield__input" type="text" ng-model="prenom" id="prenom">
+              <span class="help-block">Actuel : {{ membre.value.prenom }}</span>
+            </td>
+            <td>
+              <input class="mdl-textfield__input" type="text" ng-model="bucque" id="bucque">
+              <span class="help-block">Actuel : {{ membre.value.bucque }}</span>
+            </td>
+            <td>
+              <textarea class="mdl-textfield__input" type="text" id="description" ng-model="description" rows="4"></textarea>
+              <span class="help-block">Actuel : {{ membre.value.description }}</span>
+            </td>
+            <td>
+            <button ng-click="majMembre(membre, nom, prenom, bucque, description)" class="btn btn-primary">
+              <i class="icon-refresh"></i>
+            </button>
+            </td>
+          </tr>
+        </tbody>
+    </table>
+</div>
+
+
+
+
+

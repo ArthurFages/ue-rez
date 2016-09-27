@@ -1,0 +1,440 @@
+<h1>Admin</h1>
+
+
+<h2>Messages</h2>
+<!--<div class="container">
+  <div class="container-unit">-->
+<div class="mdl-grid">
+
+  <div class="mdl-cell mdl-cell--6-col">
+    <div class="info">
+      <ul class="demo-list-three mdl-list">
+        <li ng-repeat="message in messagesUE" class="mdl-list__item mdl-list__item--three-line">
+          <span class="mdl-list__item-primary-content">
+            <i class="material-icons">message</i>
+            <span>{{ message.value.titre }}</span>
+            <span class="mdl-list__item-text-body">
+              {{ message.value.message }}
+            </span>
+            <span class="mdl-list__item-secondary-content">
+              {{ message.value.lien }}
+            </span>
+          </span>        
+          <i class="material-icons" ng-click="deleteMessageUE(message)">delete</i>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="mdl-cell mdl-cell--6-col">
+
+    <!--<form novalidate>-->
+    <div class="container-unit">
+      <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+        <input class="mdl-textfield__input" type="text" ng-model="titre" id="titre"/>
+        <label class="mdl-textfield__label" for="titre">Titre</label>
+      </div>
+      <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+        <input class="mdl-textfield__input" type="text" ng-model="lien" id="lien"/>
+        <label class="mdl-textfield__label" for="lien">Lien</label>
+      </div>
+      <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+        <textarea class="mdl-textfield__input" type="text" rows= "5" ng-model="message" id="message"></textarea>
+        <label class="mdl-textfield__label" for="message">Message</label>
+      </div>
+
+      <div class="controls">
+      <button ng-click="saveMessage(titre, message, lien)" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
+        Enregistrer
+      </button>
+      </div>
+    </div>
+    <!--</form>-->
+  </div>
+
+  <!--<div class="container-unit">
+     Données -->
+  
+</div>
+
+
+
+
+
+
+
+
+<h2>Emprunts</h2>
+<!--<div class="container">
+  <div class="container-unit">-->
+<div class="mdl-grid">
+
+  <div class="container-unit">
+
+    <h3>Demandes d'emprunt</h3>
+
+
+    <div class="mdl-cell mdl-cell--6-col">  
+      <table class="mdl-data-table mdl-js-data-table">
+          <thead>
+            <tr>
+              <th class="mdl-data-table__cell--non-numeric">Date souhaitée</th>
+              <th>Bucque</th>
+              <th>Chambre</th>
+              <th>Telephone</th>
+              <th>Mail</th>
+              <th>Demande</th>
+              <th>Date demande</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="demande in demandes">
+              <td class="mdl-data-table__cell--non-numeric">{{ demande.value.dateSouhaitee }}</td>
+              <td> {{ demande.value.bucque }} </td>
+              <td> {{ demande.value.chambre }} </td>
+              <td> {{ demande.value.tel }} </td>
+              <td> {{ demande.value.mail }} </td>
+              <td> {{ demande.value.quoi | json }} </td>
+              <td> {{ demande.value.dateDemande }}</td>
+              <td>
+              <button ng-click="validateIdentification(demande)" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
+                <i class="material-icons">arrow_forward</i>
+              </button>
+              </td>
+            </tr>
+          </tbody>
+      </table>
+    </div>
+  </div>
+
+
+
+
+  <div ng-show="showIdentification" class="container-unit ng-hide">
+    <h3>Identification matériel</h3>
+
+    <!-- Affichage de la demande choisie -->
+    <h4>Commande sélectionnée<h4>
+    <table class="mdl-data-table mdl-js-data-table">
+      <thead>
+        <tr>
+          <th class="mdl-data-table__cell--non-numeric">Date souhaitée</th>
+          <th>Bucque</th>
+          <th>Chambre</th>
+          <th>Telephone</th>
+          <th>Mail</th>
+          <th>Demande</th>
+          <th>Date demande</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="mdl-data-table__cell--non-numeric">{{ demandeForIdentifiaction.value.dateSouhaitee }}</td>
+          <td> {{ demandeForIdentifiaction.value.bucque }} </td>
+          <td> {{ demandeForIdentifiaction.value.chambre }} </td>
+          <td> {{ demandeForIdentifiaction.value.tel }} </td>
+          <td> {{ demandeForIdentifiaction.value.mail }} </td>
+          <td> {{ demandeForIdentifiaction.value.quoi | json }} </td>
+          <td> {{ demandeForIdentifiaction.value.dateDemande }}</td>
+        </tr>
+      </tbody>
+    </table>
+
+
+    <!-- Affichage des identifiants attribués à cette commande -->
+    <h4>Identifiants relatifs à cette commande<h4>
+    <div class="container-unit-wrap">
+      <span ng-repeat="id in identifiants" class="mdl-chip mdl-chip--deletable">
+        <span class="mdl-chip__text">{{ id.value }}</span>
+        <button type="button" class="mdl-chip__action" ng-click="delIdentifiant(id)">
+          <i class="material-icons">cancel</i>
+        </button>
+      </span>
+    </div>
+
+    <!-- Choix des identifiants -->
+    <h4>Identifiants à attribuer à cette commande</h4>
+    <div class="container-unit-wrap">
+      <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+        <input class="mdl-textfield__input" type="text" ng-model="id" id="id"/>
+        <label class="mdl-textfield__label" for="id">Identifiant</label>
+      </div>
+      <button ng-click="addIdentifiant(id)" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
+        <i class="material-icons">exposure_plus_1</i>
+      </button>
+      <button ng-click="validateDemande(demandeForIdentifiaction, identifiants)" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
+        <i class="material-icons">arrow_forward</i>
+      </button>
+    </div>
+
+  </div>
+
+
+  <div class="container-unit">
+
+    <h3>Emprunts en cours</h3>
+
+
+    <div class="mdl-cell mdl-cell--6-col">   
+      <table class="mdl-data-table mdl-js-data-table">
+          <thead>
+            <tr>
+              <th class="mdl-data-table__cell--non-numeric">Identifiant</th>
+              <th>Bucque</th>
+              <th>Chambre</th>
+              <th>Telephone</th>
+              <th>Mail</th>
+              <th>Materiel</th>
+              <th>Date demande</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="emprunt in emprunts">
+              <td class="mdl-data-table__cell--non-numeric">{{ emprunt.value.identifiant }}</td>
+              <td> {{ emprunt.value.bucque }} </td>
+              <td> {{ emprunt.value.chambre }} </td>
+              <td> {{ emprunt.value.tel }} </td>
+              <td> {{ emprunt.value.mail }} </td>
+              <td><div class="content-unit" ng-repeat="id in emprunt.value.idenfiants">id</div></td>
+              <td> {{ emprunt.value.dateDemande }}</td>
+              <td>
+              <button ng-click="historateEmprunt(emprunt)" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
+                <i class="material-icons">done</i>
+              </button>
+              </td>
+            </tr>
+          </tbody>
+      </table>
+      
+    </div>
+  </div>
+
+
+
+  <!--<div class="mdl-cell mdl-cell--6-col">
+    <div class="info">
+      <ul class="demo-list-three mdl-list">
+        <li ng-repeat="demande in demandes" class="mdl-list__item mdl-list__item--three-line">
+
+          <span class="mdl-list__item-title">{{ demande.value.bucque }}</span>
+          <span  class="mdl-list__item-sub-title">{{ demande.value.date }}</span>
+          <span  class="mdl-list__item-text-body">
+            {{ demande.value.chambre }} - {{ demande.value.tel }} - {{ demande.value.mail }}
+          </span>
+          <span class="mdl-list__item-secondary-content">
+            {{ demande.value.quoi | json }}
+          </span>
+    
+          <i class="material-icons" ng-click="validateDemande(demande)">arrow_forward</i>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <h3>Emprunts en cours</h3>
+  <div class="mdl-cell mdl-cell--6-col">
+    <div class="info">
+      <ul class="demo-list-three mdl-list">
+        <li ng-repeat="emprunt in emprunts" class="mdl-list__item">
+          
+          <span class="mdl-list__item-title">{{ emprunt.value.bucque }}</span>
+          <span  class="mdl-list__item-sub-title">{{ emprunt.value.date }}</span>
+          <span  class="mdl-list__item-text-body">
+            {{ emprunt.value.chambre }} - {{ emprunt.value.tel }} - {{ emprunt.value.mail }}
+          </span>
+          <span class="mdl-list__item-secondary-content">
+            {{ emprunt.value.quoi | json }}
+          </span>
+
+          <i class="material-icons" ng-click="historateEmprunt(emprunt)">done</i>
+        </li>
+      </ul>
+    </div>
+  </div> -->
+
+  <!--<div class="container-unit">
+     Données -->
+  
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h2>Categories</h2>
+<!--<div class="container">
+  <div class="container-unit">-->
+<div class="mdl-grid">
+
+  <div class="mdl-cell mdl-cell--6-col">
+    <div class="mdl-card mdl-shadow--2dp ">     
+      <table class="mdl-data-table mdl-js-data-table mdl-cell--12-col mdl-cell">
+          <thead>
+            <tr>
+              <th class="mdl-data-table__cell--non-numeric">Matos</th>
+              <!--<th>Qte</th>-->
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="categorie in categories">
+              <td class="mdl-data-table__cell--non-numeric">{{ categorie.value.nom }}</td>
+              <!--<td> {{ categorie.value.qteTotale }} </td>-->
+              <td>
+              <button ng-click="deleteCategorie(categorie)" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
+                <i class="material-icons">delete</i>
+              </button>
+              </td>
+            </tr>
+          </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!--<div class="mdl-cell mdl-cell--6-col">
+    <div class="info">
+      <ul class="demo-list-three mdl-list">
+        <li ng-repeat="categorie in categories" class="mdl-list__item mdl-list__item--three-line">
+          <span class="mdl-list__item-primary-content">
+            <i class="material-icons">categorie</i>
+            <span>{{ categorie.value.nom }}</span>
+            <span class="mdl-list__item-text-body">
+              {{ categorie.value.qte }}
+            </span>
+          </span>        
+          <i class="material-icons" ng-click="deleteCategorie(categorie)">delete</i>
+        </li>
+      </ul>
+    </div>
+  </div>-->
+
+  <div class="mdl-cell mdl-cell--6-col">
+
+    <!--<form novalidate>-->
+    <div class="container-unit">
+      <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+        <input class="mdl-textfield__input" type="text" ng-model="nom" id="nom"/>
+        <label class="mdl-textfield__label" for="nom">Nom</label>
+      </div>
+      <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+        <input class="mdl-textfield__input" type="text" ng-model="qte" id="qte"/>
+        <label class="mdl-textfield__label" for="qte">Qte</label>
+      </div>
+
+      <div class="controls">
+      <button ng-click="saveCategorie(nom, qte)" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
+        Enregistrer
+      </button>
+      </div>
+    </div>
+    <!--</form>-->
+  </div>
+
+  <!--<div class="container-unit">
+     Données -->
+  
+</div>
+
+
+
+
+
+
+
+
+
+
+<h2>UE</h2>
+
+
+    <div class="info">
+
+      <table class="mdl-data-table mdl-js-data-table mdl-cell--12-col mdl-cell">
+          <thead>
+            <tr>
+              <th class="mdl-data-table__cell--non-numeric">Bools</th>
+              <th>Nom</th>
+              <th>Prenom</th>
+              <th>Bucque</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="membre in membresUE">
+              <td>
+                {{ membre.value.bools }}
+              </td>
+              <td>
+                <input class="mdl-textfield__input" type="text" ng-model="nom" id="nom">
+                <label class="mdl-textfield__label" for="nom">{{ membre.value.nom }}</label>
+              </td>
+              <td>
+                <input class="mdl-textfield__input" type="text" ng-model="prenom" id="prenom">
+                <label class="mdl-textfield__label" for="prenom">{{ membre.value.prenom }}</label>
+              </td>
+              <td>
+                <input class="mdl-textfield__input" type="text" ng-model="bucque" id="bucque">
+                <label class="mdl-textfield__label" for="bucque">{{ membre.value.bucque }}</label>
+              </td>
+              <td>
+                <textarea class="mdl-textfield__input" type="text" id="description" ng-model="description" rows="4"></textarea>
+                <label class="mdl-textfield__label" for="description">{{ membre.value.description }}</label>
+              </td>
+              <!--<td> {{ categorie.value.qteTotale }} </td>-->
+              <td>
+              <button ng-click="majMembre(membre, nom, prenom, bucque, description)" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
+                <i class="material-icons">refresh</i>
+              </button>
+              </td>
+            </tr>
+          </tbody>
+      </table>
+
+    </div>
+
+
+
+
+<h2>Messages des PGs</h2>
+
+<div class="info">
+  <ul class="demo-list-three mdl-list">
+    <li ng-repeat="message in messages" class="mdl-list__item mdl-list__item--three-line">
+      <span class="mdl-list__item-primary-content">
+        <i class="material-icons">message</i>
+        <span>{{ message.value.titre }}</span>
+        <span class="mdl-list__item-text-body">
+          {{ message.value.message }}
+        </span>
+        <span class="mdl-list__item-secondary-content">
+          {{ message.value.qui }}
+        </span>
+      </span>        
+      <i class="material-icons" ng-click="deleteMessage(message)">delete</i>
+    </li>
+  </ul>
+</div>
+
+
+
+
+
+
+
+

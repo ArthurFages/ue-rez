@@ -1,0 +1,37 @@
+<h1>UE</h1>
+
+<div class="info">
+
+<center><h4>Bureau restreint</h4></center>
+
+  <div class="container card-input">
+    <div ng-repeat="membre in membresUE">
+      <div class="content-container">
+        <div class="demo-card-square mdl-card mdl-shadow--2dp">
+          <div class="mdl-card__title mdl-card--expand">
+            <!--<img src="http://www.ueensam.org/uploads/Equipe/zident-2015-2.jpg">-->
+            {{ membre.value.bools }} - {{ membre.value.bucque }}
+          </div>
+          <div class="mdl-card__supporting-text">
+            {{ membre.value.description }}
+          </div>
+          <div class="mdl-card__actions mdl-card--border">
+            {{ membre.value.prenom }} {{ membre.value.nom }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+      <!--<ul class="demo-list-two mdl-list">
+
+        <li ng-repeat="membre in membresUE" class="mdl-list__item mdl-list__item--two-line">
+          <span class="mdl-list__item-primary-content">
+            <i class="material-icons mdl-list__item-avatar">person</i>
+            <span>{{ membre.value.prenom }} {{ membre.value.nom }}</span>
+            <span class="mdl-list__item-sub-title">{{ membre.value.bools }}</span>
+          </span>
+        </li>
+      </ul>-->
+
+</div>

@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html lang="en" ng-app="myApp" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html lang="en" ng-app="myApp" class="no-js"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>P3 REZ</title>
+  <meta name="description" content="Vie à P3">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <!--<link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/normalize.css">
+  <link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/main.css">-->
+  <link rel="stylesheet" href="app.css">
+  <!--<script src="bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>-->
+
+  <!-- In production use:
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
+  -->
+  <script src="bower_components/angular/angular.js"></script>
+  <script src="bower_components/angular-route/angular-route.js"></script>
+
+  <script src="bower_components/angularfire/dist/angularfire.js"></script>
+  <script src="bower_components/firebase/firebase.js"></script>
+
+  <script src="app.js"></script>
+  <script src="view1/view1.js"></script>
+  <script src="view2/view2.js"></script>
+  <script src="accueil/accueil.js"></script>
+  <script src="contact/contact.js"></script>
+  <script src="credits/credits.js"></script>
+  <script src="info/info.js"></script>
+  <script src="matos/matos.js"></script>
+  <script src="admin/admin.js"></script>
+  <script src="ue/ue.js"></script>
+  <script src="login/login.js"></script>
+
+  <script src="components/version/version.js"></script>
+  <script src="components/version/version-directive.js"></script>
+  <script src="components/version/interpolate-filter.js"></script>
+
+  <link href="bower_components/bootstrap/docs/assets/css/bootstrap.css" rel="stylesheet">
+
+  <!--<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">-->
+
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+  <style>
+    body {
+      padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
+    }
+  </style>
+  <link href="bower_components/bootstrap/docs/assets/css/bootstrap-responsive.css" rel="stylesheet">
+  
+</head>
+<body ng-controller="indexController">
+
+
+<div class="navbar navbar-fixed-top">
+  <div class="navbar-inner">
+    <div class="container">
+
+
+      <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+      <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </a>
+
+      <!-- Be sure to leave the brand out there if you want it shown -->
+      <a class="brand" href="#">P3 REZ </a>
+ 
+      <!-- Everything you want hidden at 940px or less, place within here -->
+      <div class="nav-collapse collapse">
+        <ul class="nav">
+          <li class="{{isAccueilActive}}"><a href="#!/accueil" ng-click="setAccueilActif()">Accueil</a></li>
+          <li class="{{isInfoActive}}"><a href="#!/info" ng-click="setInfoActif()">Info pratique</a></li>
+          <li class="{{isMatosActive}}"><a href="#!/matos" ng-click="setMatosActif()">Emprunt matos</a></li>
+          <li class="{{isContactActive}}"><a href="#!/contact" ng-click="setContactActif()">Contact</a></li>
+          <li class="{{isUEActive}}"><a href="#!/ue" ng-click="setUEActif()">UE</a></li>
+        </ul>
+        <!-- .nav, .navbar-search, .navbar-form, etc -->
+      </div>
+ 
+    </div>
+  </div>
+</div>
+
+
+
+ 
+
+
+
+
+
+
+
+  <div class="container">
+    <div ng-view></div>
+  </div>
+
+
+<div id="footer" class="footer">
+
+  <div class="row-fluid">
+
+    <div class="span3">
+    <h5 id="footer-title">Vie Gadz</h5>
+    <ul>
+      <li id="footer-line"><a class="footer-link" href="http://www.arts-et-metiers.asso.fr/">SOCE</a></li>
+      <li id="footer-line"><a class="footer-link" href="https://www.gadz.org/">Gadz.org</a></li>
+      <li id="footer-line"><a class="footer-link" href="http://www.fondam.org/">Fondation</a></li>
+      <li id="footer-line"><a class="footer-link" href="http://www.gadz.tv/index.html">Gadz TV</a></li>
+    </ul>
+    </div>
+
+    <div class="span3">
+    <h5 id="footer-title">Vie à la rez</h5>
+    <ul>
+      <li id="footer-line"><a class="footer-link" href="http://www.ueensam.org/">Site de l'UE</a></li>
+      <li id="footer-line"><a class="footer-link" href="#!/contact">Contacter l'UE</a></li>
+      <li id="footer-line"><a class="footer-link" href="http://www.maison-arts-et-metiers.fr/fr/">Le site de la rez</a></li>
+      <li id="footer-line"><a class="footer-link" href="http://www.ciup.fr">Site de la cité U</a></li>
+    </ul>
+    </div>
+
+    <div class="span3">
+    <h5 id="footer-title">Vie à P3</h5>
+    <ul>
+      <li id="footer-line"><a class="footer-link" href="http://www.ratp.fr/itineraires/fr/ratp/recherche-avancee">Se déplacer</a></li>
+      <li id="footer-line"><a class="footer-link" href="https://www.facebook.com/groups/1595748387373756/">Gadz Immo</a></li>
+      <li id="footer-line"><a class="footer-link" href="https://www.facebook.com/groups/p3.gadz/">Gadz P2-P3</a></li>
+      <li id="footer-line"><a class="footer-link" href="https://www.facebook.com/groups/1012000405482035/">Les rdv JP</a></li>
+    </ul>
+    </div>
+
+    <div class="span3">
+    <h5 id="footer-title">Administration</h5>
+    <ul>
+      <li id="footer-line"><a class="footer-link" href="#!/credits">Credits</a></li>
+      <li id="footer-line"><a class="footer-link" href="#!/login">Login</a></li>
+      <li id="footer-line"><a class="footer-link" href="mailto:arthur.fages@gadz.org?subject='Site UE P3'">Nous contacter</a></li>
+    </ul>
+    </div>
+
+  </div>
+</div>
+
+
+
+  <!--[if lt IE 7]>
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+  <![endif]-->
+
+
+
+  <!-- Le javascript
+    ================================================== -->
+    <script src="bower_components/bootstrap/docs/assets/js/jquery.js"></script>
+    <script src="bower_components/bootstrap/docs/assets/js/boostrap.js"></script>
+    <script src="bower_components/bootstrap/docs/assets/js/boostrap.min.js"></script>
+    <script src="bower_components/bootstrap/docs/assets/js/bootstrap-transition.js"></script>
+    <script src="bower_components/bootstrap/docs/assets/js/bootstrap-alert.js"></script>
+    <script src="bower_components/bootstrap/docs/assets/js/bootstrap-modal.js"></script>
+    <script src="bower_components/bootstrap/docs/assets/js/bootstrap-dropdown.js"></script>
+    <script src="bower_components/bootstrap/docs/assets/js/bootstrap-scrollspy.js"></script>
+    <script src="bower_components/bootstrap/docs/assets/js/bootstrap-tab.js"></script>
+    <script src="bower_components/bootstrap/docs/assets/js/bootstrap-tooltip.js"></script>
+    <script src="bower_components/bootstrap/docs/assets/js/bootstrap-popover.js"></script>
+    <script src="bower_components/bootstrap/docs/assets/js/bootstrap-button.js"></script>
+    <script src="bower_components/bootstrap/docs/assets/js/bootstrap-collapse.js"></script>
+    <script src="bower_components/bootstrap/docs/assets/js/bootstrap-carousel.js"></script>
+    <script src="bower_components/bootstrap/docs/assets/js/bootstrap-typeahead.js"></script>
+
+  
+</body>
+</html>

@@ -1,0 +1,77 @@
+<h1>Emprunts</h1>
+
+<div class="well">
+  <p>Dans cette page, tu peux effectuer une demande pour emprunter du matos dispo à la rez. Une fois ta demande effectuée, un membre de l'UE prendra contact avec toi pour finaliser l'emprunt. </p>
+</div>
+
+
+<div ng-show="alertError" class="alert alert-error">
+  <button type="button" ng-click="deleteAlert()" class="close" data-dismiss="alert">&times;</button>
+  <strong>Oop'sss !</strong> Tout les champs doivent être remplis pour valider une demande.
+
+</div>
+
+<div ng-show="alertSuccess" class="alert alert-success">
+  <button type="button" ng-click="deleteAlert()" class="close" data-dismiss="alert">&times;</button>
+  <strong>Okech !</strong> Ta demande a été prise en compte. L'UE prendra bientôt contact avec toi.
+
+</div>
+
+
+<legend>Qu'est ce que tu veux emprunter ?</legend>
+<table class="table">
+  <thead>
+    <tr>
+      <th class="mdl-data-table__cell--non-numeric">Matos</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="categorie in categories">
+      <td class="mdl-data-table__cell--non-numeric">{{ categorie.value.nom }}</td>
+      <td>
+      <button ng-click="addDemande(categorie)" class="btn">
+        <i class="icon-plus"></i>
+      </button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+<legend>Liste des demandes</legend>
+<table class="table">
+  <thead>
+    <tr>
+      <th class="mdl-data-table__cell--non-numeric">Demande</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="demande in demandes">
+      <td class="mdl-data-table__cell--non-numeric">{{ demande.demande.value.nom }}</td>
+      <td>
+      <button ng-click="deleteDemande(demande)" class="btn btn-danger">
+        <i class="icon-remove"></i>
+      </button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+<form>
+  <fieldset>
+    <legend>Infos PG</legend>
+    <!--<label>Label name</label>-->
+    <input type="text" ng-model="bucque" id="bucque" placeholder="Bucque">
+    <input type="text" ng-model="chambre" id="chambre" placeholder="Numéro de chambre">
+    <input type="text" ng-model="tel" id="tel" placeholder="Bleral">
+    <input type="text" ng-model="mail" id="mail" placeholder="Mail">
+    <input type="text" ng-model="date" id="date" placeholder="Date souhaitée de l'emprunt">
+
+    <center>
+    <button type="submit" ng-click="sendDemande(bucque, chambre, tel, mail, date)" class="btn btn-primary">Demander</button>
+    </center>
+  </fieldset>
+</form>

@@ -1,0 +1,116 @@
+<div class="container">
+<h1>Contact</h1>
+
+<p>Dans cette page, tu peux écrire à l'UE sur tout les sujets qui concernent la vie à P3. Hésites par à nommer la personne que tu veux contacter dans le titre du message à l'aide d'un @. Tu peux également utiliser un des mots clés affichés sur cette page à l'aide d'un # pour faciliter leur lecture. Tu n'es pas obligé de donner ton identité, mais essaye quand même de te retenir si tu balances anonymement des messages de rage, de pail's. Ou alors je connais ton ip battard, check tes paquets ARP. </p>
+
+<div class="mdl-grid">
+
+
+  <div class="mdl-cell mdl-cell--6-col">
+
+    <!--<form novalidate> demo-card-wide mdl-card mdl-shadow--2dp-->
+    <div class="card-input">
+      <div class="container-unit white-background demo-card-wide  mdl-shadow--2dp">
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+          <input class="mdl-textfield__input" type="text" ng-model="titre" id="titre"/>
+          <label class="mdl-textfield__label" for="titre">Titre</label>
+        </div>
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+          <input class="mdl-textfield__input" type="text" ng-model="qui" id="qui"/>
+          <label class="mdl-textfield__label" for="qui">Qui t'es (facultatif)</label>
+        </div>
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+          <textarea class="mdl-textfield__input" type="text" rows= "20" ng-model="message" id="message"></textarea>
+          <label class="mdl-textfield__label" for="message">Message</label>
+        </div>
+
+        <div class="controls">
+        <button ng-click="sendMessage(titre, message, qui)" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
+          Envoyer
+        </button>
+        </div>
+      </div>
+    </div>
+    <!--</form>-->
+  </div>
+
+
+
+
+
+
+
+
+
+
+  <div class="mdl-cell mdl-cell--6-col">
+
+    <div class="info">
+
+      <div class="section__text mdl-grid mdl-cell mdl-cell--12-col">
+          <h4>Une question ?</h4>
+      </div>
+
+      <div class="info-container">
+
+        <div id="align-center-logo" class="section__circle-container icon-container">
+            <i class="material-icons md-48 md-dark md-inactive">school</i>
+        </div>
+        <div class="section__text text-container">
+          <h5>FITE</h5>
+          Tout ce qui touche de prêt ou de loin à la birse. Cours, stage, ... C'est ici.
+        </div>
+
+      </div>
+
+      <div class="info-container">
+
+        <div id="align-center-logo" class="section__circle-container icon-container">
+            <i class="material-icons md-48 md-dark md-inactive">place</i>
+        </div>
+        <div class="section__text text-container">
+          <h5>REZ</h5>
+          Chiotte bouchées ? Toïtoï sauvage ? Envie de chauffer le -1 ? Allez, c'est ici.
+        </div>
+
+      </div>
+
+      <div class="section__text mdl-grid mdl-cell mdl-cell--12-col">
+          <h4>Une remarque ?</h4>
+      </div>
+
+      <div class="info-container">
+
+        <div id="align-center-logo" class="section__circle-container icon-container">
+            <i class="material-icons md-48 md-dark md-inactive">question_answer</i>
+        </div>
+        <div class="section__text text-container">
+          <h5>UE</h5>
+          Oui, tu sais, les pinguoins qui vivent dans leur couloir au rdc.
+        </div>
+
+      </div>
+
+      <div class="info-container">
+
+        <div id="align-center-logo" class="section__circle-container icon-container">
+            <i class="material-icons md-48 md-dark md-inactive">lightbulb_outline</i>
+        </div>
+        <div class="section__text text-container">
+          <h5>App</h5>
+          Une idée d'amélioration pour cette sous-bouze, je suis preneur !
+        </div>
+
+      </div>
+     
+
+      
+    </div>
+
+  </div>
+</div>
+
+
+
+
+

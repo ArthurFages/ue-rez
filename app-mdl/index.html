@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html lang="en" ng-app="myApp" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html lang="en" ng-app="myApp" class="no-js"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>P3 REZ</title>
+  <meta name="description" content="Vie à P3">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/normalize.css">
+  <link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/main.css">
+  <link rel="stylesheet" href="app.css">
+  <script src="bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
+
+  <!-- In production use:
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
+  -->
+  <script src="bower_components/angular/angular.js"></script>
+  <script src="bower_components/angular-route/angular-route.js"></script>
+
+  <script src="bower_components/angularfire/dist/angularfire.js"></script>
+  <script src="bower_components/firebase/firebase.js"></script>
+
+  <script src="app.js"></script>
+  <script src="view1/view1.js"></script>
+  <script src="view2/view2.js"></script>
+  <script src="accueil/accueil.js"></script>
+  <script src="contact/contact.js"></script>
+  <script src="credits/credits.js"></script>
+  <script src="info/info.js"></script>
+  <script src="matos/matos.js"></script>
+  <script src="admin/admin.js"></script>
+  <script src="ue/ue.js"></script>
+
+  <script src="components/version/version.js"></script>
+  <script src="components/version/version-directive.js"></script>
+  <script src="components/version/interpolate-filter.js"></script>
+
+  <link rel="stylesheet" href="/bower_components/material-design-lite/material.min.css">
+  <script src="/bower_components/material-design-lite/material.min.js"></script>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  
+</head>
+<body>
+
+  <!-- No header, and the drawer stays open on larger screens (fixed drawer). -->
+  <!-- Menu -->
+  <div class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer
+          mdl-layout--fixed-header">
+      <header class="mdl-layout__header"  id="banner">
+      </header>
+      <div class="mdl-layout__drawer">
+          <center>
+          <img src="https://cdn2.iconfinder.com/data/icons/nasty/60/unicorn-128.png" height="50dp" width="50dp">
+          </center>
+          <span class="mdl-layout-title">Menu</span>
+          <nav class="mdl-navigation">
+            <a class="mdl-navigation__link" href="#!/accueil">Accueil</a>
+            <a class="mdl-navigation__link" href="#!/info">Info pratique</a>
+            <a class="mdl-navigation__link" href="#!/matos">Emprunt matos</a>
+            <a class="mdl-navigation__link" href="#!/contact">Contact</a>
+            <a class="mdl-navigation__link" href="#!/ue">UE</a>
+          </nav>
+      </div>
+      <main class="mdl-layout__content">
+      <div id="overview" class="mdl-layout__tab-panel is-active" >
+
+        <div class="container">
+          <div class="view-padding" ng-view></div>
+        </div>
+
+
+          <footer class="mdl-mega-footer">
+            <div class="mdl-mega-footer__middle-section">
+
+              <div class="mdl-mega-footer__drop-down-section">
+                <input class="mdl-mega-footer__heading-checkbox" type="checkbox" checked>
+                <h1 class="mdl-mega-footer__heading">Vie Gadz</h1>
+                <ul class="mdl-mega-footer__link-list">
+                  <li><a href="http://www.arts-et-metiers.asso.fr/">SOCE</a></li>
+                  <li><a href="https://www.gadz.org/">Gadz.org</a></li>
+                  <li><a href="http://www.fondam.org/">Fondation</a></li>
+                  <li><a href="http://www.gadz.tv/index.html">Gadz TV</a></li>
+                </ul>
+              </div>
+
+              <div class="mdl-mega-footer__drop-down-section">
+                <input class="mdl-mega-footer__heading-checkbox" type="checkbox" checked>
+                <h1 class="mdl-mega-footer__heading">Vie à la rez</h1>
+                <ul class="mdl-mega-footer__link-list">
+                  <li><a href="http://www.ueensam.org/">Site de l'UE</a></li>
+                  <li><a href="#!/contact">Contacter l'UE</a></li>
+                  <li><a href="http://www.maison-arts-et-metiers.fr/fr/">Le site de la rez</a></li>
+                  <li><a href="#http://www.ciup.fr">Site de la cité U</a></li>
+                  
+                </ul>
+              </div>
+
+              <div class="mdl-mega-footer__drop-down-section">
+                <input class="mdl-mega-footer__heading-checkbox" type="checkbox" checked>
+                <h1 class="mdl-mega-footer__heading">Vie à P3</h1>
+                <ul class="mdl-mega-footer__link-list">
+                <li><a href="http://www.ratp.fr/itineraires/fr/ratp/recherche-avancee">Se déplacer</a></li>
+                  <li><a href="https://www.facebook.com/groups/1595748387373756/">Gadz Immo</a></li>
+                  <li><a href="https://www.facebook.com/groups/p3.gadz/">Gadz P2-P3</a></li>
+                  <li><a href="https://www.facebook.com/groups/1012000405482035/">Les rdv JP</a></li>
+                </ul>
+              </div>
+
+              <div class="mdl-mega-footer__drop-down-section">
+                <input class="mdl-mega-footer__heading-checkbox" type="checkbox" checked>
+                <h1 class="mdl-mega-footer__heading">Administration</h1>
+                <ul class="mdl-mega-footer__link-list">
+                  <li><a class="mdl-navigation__link" href="#!/credits">Credits</a></li>
+                  <li><a href="#!/admin">Login</a></li>
+                  <li><a href="mailto:arthur.fages@gadz.org?subject='Site UE P3'">Nous contacter</a></li>
+                </ul>
+              </div>
+
+            </div>
+
+            <div class="mdl-mega-footer__bottom-section">
+              <div class="mdl-logo">P3 REZ, ta vie à P3</div>
+              <ul class="mdl-mega-footer__link-list">
+                <li><a href="http://www.linternaute.com/dictionnaire/fr/definition/se-demerder/">Help</a></li>
+                <li><a href="https://www.youtube.com/watch?v=pzZOc05BFHE">Privacy & Terms</a></li>
+              </ul>
+            </div>
+
+          </footer>
+
+      </div>   
+      </main>
+  </div>
+  <!-- End menu -->
+
+
+
+
+  <!--[if lt IE 7]>
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+  <![endif]-->
+
+
+  
+</body>
+</html>

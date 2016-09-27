@@ -1,0 +1,23 @@
+<div class="container">
+<h1>Contact</h1>
+
+<div class="well">
+  <p>Dans cette page, tu peux écrire à l'UE sur tout les sujets qui concernent la vie à P3. Hésites par à nommer la personne que tu veux contacter dans le titre du message à l'aide d'un @. Tu peux également utiliser un des mots clés affichés sur cette page à l'aide d'un # pour faciliter leur lecture. Tu n'es pas obligé de donner ton identité, enjoy ! </p>
+</div>
+
+
+<div ng-show="alertSuccess" class="alert alert-success">
+  <button type="button" ng-click="deleteAlert()" class="close" data-dismiss="alert">&times;</button>
+  <strong>Okech !</strong> Message envoyé
+</div>
+
+<form>
+  <fieldset>
+    <input type="text" class="span6" ng-model="titre" id="titre" placeholder="Titre">
+    <input type="text" class="span6" ng-model="qui" id="qui" placeholder="Qui t'es (facultatif)">
+    <textarea class="input-block-level" type="text" ng-model="message" rows="6" id="message" placeholder="Message"></textarea>
+    <center>
+      <button type="submit" ng-click="sendMessage(titre, message, qui)" class="btn btn-primary">Envoyer</button>
+    </center>
+  </fieldset>
+</form>
